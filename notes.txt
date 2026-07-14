@@ -1,0 +1,11 @@
+test django application
+
+    python manage.py test
+
+Run Django system checks
+
+    python manage.py check
+
+Verify there are no pending migrations
+
+    python manage.py makemigrations --check --dry-run
