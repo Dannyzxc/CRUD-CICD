@@ -45,15 +45,8 @@ jobs:
       - name: Run Semgrep # run static code analysis using semgrep
         run: semgrep scan --config p/python --config p/django --config auto #--config auto added to automatically detect the language and framework of the project  
 
-        
+
 # add gitleaks secret scanning to the CI workflow
 
-      - name: Install Gitleaks
-        run: |
-          wget https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_linux_x64.tar.gz
-          tar -xzf gitleaks_linux_x64.tar.gz
-          sudo mv gitleaks /usr/local/bin/
-
       - name: Run Gitleaks
-        run: |
-          gitleaks detect --source . --verbose
+        uses: gitleaks/gitleaks-action@v2
