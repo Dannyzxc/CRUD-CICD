@@ -42,6 +42,6 @@ jobs:
         run: pip install semgrep
 
       - name: Run Semgrep # run static code analysis using semgrep
-        run: semgrep scan --config auto
+        run: semgrep scan --config p/python --config p/django
 
 
