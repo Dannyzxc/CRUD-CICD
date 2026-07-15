@@ -3,9 +3,61 @@ test django application
     python manage.py test
 
 Run Django system checks
-
     python manage.py check
 
-Verify there are no pending migrations
+    Django inspects your project for common configuration problems.
 
+    Examples:
+        Incorrect settings
+        URL configuration issues
+        Model configuration problems
+        Middleware issues
+        Security warnings (in some cases)
+
+Verify there are no pending migrations
     python manage.py makemigrations --check --dry-run
+
+    Imagine this situation:
+
+    You modify a model:
+        class Order(models.Model):
+            customer_name = models.CharField(max_length=100)
+            phone = models.CharField(max_length=20)
+
+    But you forget to run:
+        python manage.py makemigrations
+
+    Your code works on your laptop because your database is already updated.
+
+    Another developer pulls your code...
+
+    💥 Their application breaks.
+
+    This CI step catches that mistake before it gets merged.
+
+
+
+objective: Ensure that the Django project is properly configured and all tests pass on every push to the main branch.
+
+        Push Code
+            │
+            ▼
+        Checkout Repository
+            │
+            ▼
+        Setup Python
+            │
+            ▼
+        Install Dependencies
+            │
+            ▼
+        Django System Check
+            │
+            ▼
+        Migration Check
+            │
+            ▼
+        Run Tests
+            │
+            ▼
+        Success ✅
