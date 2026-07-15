@@ -36,12 +36,11 @@ jobs:
           python manage.py makemigrations --check --dry-run
 
       - name: Install Semgrep   # install semgrep for static code analysis
-        # uses: semgrep/semgrep-action@v1
-        #   with:
-        #     config: auto
-        run: pip install semgrep
+        run: |
+            python -m pip install --upgrade pip
+            pip install semgrep
 
       - name: Run Semgrep # run static code analysis using semgrep
-        run: semgrep scan --config p/python --config p/django
+        run: semgrep scan --config p/python --config p/django --config auto #--config auto added to automatically detect the language and framework of the project  
 
 
