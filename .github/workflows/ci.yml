@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+# permissions:
+#   contents: read
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -48,5 +51,5 @@ jobs:
 
 # add gitleaks secret scanning to the CI workflow
 
-      - name: Run Gitleaks
+      - name: Run Gitleaks # run gitleaks to scan for secrets in the repository
         uses: gitleaks/gitleaks-action@v2
