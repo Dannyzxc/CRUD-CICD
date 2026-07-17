@@ -2,6 +2,8 @@ asgiref==3.12.1
 crispy-bootstrap5==2026.3
 Django==5.2.16
 django-crispy-forms==2.6
+django-csp==4.0
+packaging==26.2
 pillow==12.3.0
 python-decouple==3.8
 sqlparse==0.5.5

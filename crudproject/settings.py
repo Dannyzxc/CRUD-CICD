@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'crudapp',
     'crispy_forms',
     'crispy_bootstrap5',
+    'csp'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -138,3 +139,26 @@ SECURE_SSL_REDIRECT = False
 SECURE_HSTS_SECONDS = 0
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SECURE_HSTS_PRELOAD = False
+
+
+CONTENT_SECURITY_POLICY = {
+    "DIRECTIVES": {
+        "default-src": ("'self'",),
+        "script-src": (
+            "'self'",
+            "https://cdn.jsdelivr.net",
+        ),
+        "style-src": (
+            "'self'",
+            "https://cdn.jsdelivr.net",
+        ),
+        "img-src": (
+            "'self'",
+            "data:",
+        ),
+        "font-src": (
+            "'self'",
+            "https://cdn.jsdelivr.net",
+        ),
+    }
+}
