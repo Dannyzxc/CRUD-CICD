@@ -162,3 +162,12 @@ CONTENT_SECURITY_POLICY = {
         ),
     }
 }
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = "DENY"
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
+# when deploying to production, set these to True to enforce HTTPS and secure cookies
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True

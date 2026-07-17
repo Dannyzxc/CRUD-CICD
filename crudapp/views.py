@@ -2,6 +2,9 @@ from django.shortcuts import redirect, render
 from .forms import OrderForm
 from .models import Orders
 
+from django.shortcuts import get_object_or_404
+
+
 # Create your views here.
 def orderFormView(request):
     form = OrderForm()
@@ -21,7 +24,7 @@ def showView(request):
     return render(request, template_name, context)
 
 def updateView(request, f_oid):
-    obj = Orders.objects.get(oid=f_oid)
+    obj = get_object_or_404(Orders, pk=f_oid)
     form = OrderForm(instance=obj)
     if request.method == 'POST':
         form = OrderForm(request.POST, instance=obj)
@@ -33,7 +36,7 @@ def updateView(request, f_oid):
     return render(request, template_name, context)
 
 def deleteView(request, f_oid):
-    obj = Orders.objects.get(oid=f_oid)
+    obj = get_object_or_404(Orders, pk=f_oid)
     if request.method == 'POST':
         obj.delete()
         return redirect('show_url')
