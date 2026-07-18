@@ -1,0 +1,4 @@
+{
+  "environment": "production",
+  "https_enabled": true
+}
