@@ -28,8 +28,15 @@ jobs:
 
       - name: Evaluate security policy
         run: |
-          opa eval \
+          result=$(opa eval \
             --data policies/security.rego \
             --input policies/input.json \
-            --fail-defined \
-            "data.security.allow"
+            --format raw \
+            "data.security.allow")
+
+          if [ "$result" != "true" ]; then
+            echo "❌ Security policy failed"
+            exit 1
+          fi
+
+          echo "✅ Security policy passed"
